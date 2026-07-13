@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="400" rx="16" fill="url(#bgGrad)" />
+  
+  <!-- Glowing subtle inner pattern -->
+  <circle cx="150" cy="200" r="120" fill="none" stroke="url(#glowGrad)" stroke-width="1" opacity="0.15" stroke-dasharray="8 6" />
+  <circle cx="150" cy="200" r="90" fill="none" stroke="url(#glowGrad)" stroke-width="1.5" opacity="0.2" />
+  
+  <!-- Stylized Icon -->
+  <g transform="translate(118, 140)" stroke="url(#glowGrad)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="0" y="15" width="64" height="48" rx="8" />
+    <path d="M0 50 L18 32 L36 50 M28 42 L46 24 L64 42" />
+    <circle cx="48" cy="30" r="4" fill="url(#glowGrad)" />
+    <path d="M12 -8 L14 -2 L20 0 L14 2 L12 8 L10 2 L4 0 L10 -2 Z" fill="url(#glowGrad)" opacity="0.8" transform="scale(0.8) translate(30, -10)" />
+  </g>
+  
+  <!-- Text -->
+  <text x="150" y="250" text-anchor="middle" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" letter-spacing="1">IMAGE NOT FOUND</text>
+  <text x="150" y="270" text-anchor="middle" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" letter-spacing="0.5">NexAnime</text>
+</svg>
