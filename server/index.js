@@ -13,6 +13,25 @@ const ML_SERVER_URL = process.env.ML_SERVER_URL || 'http://localhost:8000';
 app.use(cors());
 app.use(express.json());
 
+let datasetPromise = null;
+function ensureDatasetLoaded() {
+  if (!datasetPromise) {
+    datasetPromise = loadDataset();
+  }
+  return datasetPromise;
+}
+
+// Middleware to ensure the dataset is loaded before serving any requests
+app.use(async (req, res, next) => {
+  try {
+    await ensureDatasetLoaded();
+    next();
+  } catch (err) {
+    console.error('Dataset load middleware error:', err);
+    res.status(500).json({ error: 'Failed to initialize dataset: ' + err.message });
+  }
+});
+
 let animes = [];
 const animeMap = new Map();
 
@@ -209,14 +228,24 @@ app.get('/api/recommendations/hybrid/:id', async (req, res) => {
   }
 });
 
-// Initialize dataset and start listening
-loadDataset()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Backend server is running on port ${PORT}`);
+// Export the app for serverless environments (like Vercel)
+module.exports = app;
+
+// Only listen if run directly (local development)
+if (require.main === module) {
+  ensureDatasetLoaded()
+    .then(() => {
+      app.listen(PORT, () => {
+        console.log(`Backend server is running on port ${PORT}`);
+      });
+    })
+    .catch((err) => {
+      console.error('Failed to load dataset:', err);
+      process.exit(1);
     });
-  })
-  .catch((err) => {
-    console.error('Failed to load dataset:', err);
-    process.exit(1);
+} else {
+  // Start loading dataset in the background for serverless execution
+  ensureDatasetLoaded().catch((err) => {
+    console.error('Background dataset load failed:', err);
   });
+}
