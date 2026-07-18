@@ -36,7 +36,7 @@ export default function AnimeCard({ anime, onClick }) {
         />
 
         {/* Overlay Info Badges */}
-        <div className="absolute top-2 left-2 flex flex-col gap-1.5 pointer-events-none">
+        <div className="absolute top-2 left-2 flex flex-col gap-1.5 pointer-events-none z-20">
           {Score > 0 && (
             <span className="flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold bg-[#13171e]/90 text-amber-400 backdrop-blur-md border border-amber-400/20">
               <Star size={10} className="fill-amber-400" />

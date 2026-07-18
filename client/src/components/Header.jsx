@@ -5,15 +5,14 @@ export default function Header({ activeTab, setActiveTab }) {
   return (
     <header className="relative w-full overflow-hidden">
       {/* Banner Container */}
-      {/* <div className="relative h-48 sm:h-64 md:h-72 w-full overflow-hidden">
+      <div className="relative h-48 sm:h-64 md:h-72 w-full overflow-hidden">
         <img 
-          src="/static/img" 
+          src="/static/NexAnime.jpg" 
           alt="Banner" 
           className="w-full h-full object-cover object-center transform scale-105 filter brightness-75 contrast-110"
         />
-        
         <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d10] via-transparent to-black/30" />
-      </div> */}
+      </div>
 
       {/* Navigation & Brand Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 relative ">

@@ -21,6 +21,10 @@ function ensureDatasetLoaded() {
   return datasetPromise;
 }
 
+app.get('/', (req, res) => {
+  res.send('NexAnime Backend Server is running fine.');
+});
+
 // Middleware to ensure the dataset is loaded before serving any requests
 app.use(async (req, res, next) => {
   try {
